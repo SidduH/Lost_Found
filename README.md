@@ -1,2 +1,2 @@
 # lost_found
-A project repository
+A project repository for development purpose
