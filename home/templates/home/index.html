@@ -1,0 +1,36 @@
+<!--Make this as a home page-->
+<h1>Hi User, Welcome</h1>
+<ul>
+    <li><a href=" {% url 'about' %}/">About</a></li>
+    <li><a href=" {% url 'contact' %}/">Contact Us</a></li>
+    <li><a href=" {% url 'login' %}/">Login</a></li>
+    <li><a href=" {% url 'register' %}/">Register</a></li>
+</ul>
+
+<p> Recently lost items!</p>
+{% if latest_lost_items %}
+    <ul>
+        {% for item in latest_lost_items %}
+            <li>
+                <a href="{% url 'detail' item.id %}/"> {{item.item_name}}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p> Lost category: No items available</p>
+{% endif %}
+
+<p> Recently Found items!</p>
+{% if latest_found_items  %}  <!--Check with detail method logic -->
+    <ul>
+        {% for item in latest_found_items %}
+            <li>
+                <!--<a href="/home/{{ item.id}}/"> {{item.item_name}}</a>-->
+                <a href="{% url 'detail' item.id %}/"> {{item.item_name}}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p> Found category: No items available.</p>
+{% endif %}
+
